@@ -1,0 +1,36 @@
+PINIA STORE TEMPLATE
+====================
+Install: npm install pinia
+Register Pinia in main.js with app.use(createPinia()).
+
+import { defineStore } from 'pinia'
+
+export const useCounterStore = defineStore('counter', {
+  // STATE: shared data
+  state: () => ({
+    count: 0
+  }),
+
+  // GETTER: computed/read-only derived value
+  getters: {
+    doubleCount: (state) => state.count * 2
+  },
+
+  // ACTIONS: functions that change state
+  actions: {
+    increment() {
+      this.count++
+    }
+  }
+})
+
+// Use it inside <script setup>:
+import { useCounterStore } from './stores/counterStore'
+const store = useCounterStore()
+
+// Use it in template:
+<p>{{ store.count }}</p>
+<p>{{ store.doubleCount }}</p>
+<button @click="store.increment()">Add</button>
+
+In the actual project, studentStore.js uses the same pattern for API CRUD.

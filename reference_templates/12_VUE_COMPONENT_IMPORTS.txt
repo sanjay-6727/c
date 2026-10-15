@@ -1,0 +1,10 @@
+VUE COMPONENT IMPORT TEMPLATE
+=============================
+<script setup>
+import StudentForm from '../components/StudentForm.vue'
+
+// Use <StudentForm /> in this component's template.
+</script>
+
+With <script setup>, imported components can be used directly in the template.
+No components: { StudentForm } registration is needed.

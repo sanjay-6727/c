@@ -1,0 +1,16 @@
+MONGODB REPOSITORY TEMPLATE
+===========================
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface StudentRepository extends MongoRepository<Student, String> {
+}
+
+// MongoRepository gives common methods automatically:
+repository.save(student);          // create/update
+repository.findAll();              // read all
+repository.findById(id);           // read one (Optional<Student>)
+repository.existsById(id);          // check whether ID exists
+repository.deleteById(id);         // delete
+repository.count();                // count records
+
+// Put the repository in the same base package or a subpackage of the main app.

@@ -1,0 +1,21 @@
+PARENT / CHILD CRUD FORM EXAMPLE
+================================
+Child (StudentForm.vue) declares:
+const props = defineProps({ student: Object })
+const emit = defineEmits(['save', 'cancel'])
+
+When user submits:
+emit('save', { name: form.name, department: form.department, year: form.year })
+
+Parent (StudentsView.vue) uses:
+<StudentForm
+  :student="selectedStudent"
+  @save="saveFromForm"
+  @cancel="cancelForm"
+/>
+
+Meaning:
+- :student="selectedStudent" passes the selected student into the form.
+- @save="saveFromForm" calls parent function when child emits save.
+- @cancel="cancelForm" calls parent function when child emits cancel.
+- Parent calls Pinia store to save to backend.
