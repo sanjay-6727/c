@@ -1,0 +1,38 @@
+HOW TO ADAPT THIS TEMPLATE TO A DIFFERENT LAB QUESTION
+======================================================
+
+EXAMPLE 1: BOOK MANAGEMENT
+Model fields: id, title, author, price
+Collection: books
+API prefix: /books
+Vue form inputs: title, author, price
+Table columns: title, author, price
+
+EXAMPLE 2: EMPLOYEE MANAGEMENT
+Model fields: id, name, role, department
+Collection: employees
+API prefix: /employees
+Vue form inputs: name, role, department
+Table columns: name, role, department
+
+EXAMPLE 3: PRODUCT MANAGEMENT
+Model fields: id, name, category, price, quantity
+Collection: products
+API prefix: /products
+Vue form and table must use those same fields.
+
+CHANGE CHECKLIST
+1. Rename Student.java and Java class references.
+2. Update @Document collection name.
+3. Update the repository generic type.
+4. Update controller class, request mapping and model type.
+5. Update application properties database name if requested.
+6. Update API base URL in studentApi.js.
+7. Update Pinia store names and imported API functions if you rename files.
+8. Update child form fields, props and emits payload.
+9. Update the table columns and edit logic.
+10. Test all four CRUD operations.
+
+IMPORTANT
+Names must match consistently across the model, API JSON, Pinia data, form fields and table.
+Router, Pinia, and the general props/emits pattern usually do not need to change when the entity changes.

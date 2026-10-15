@@ -1,0 +1,48 @@
+VUE ROUTER — DETAILED EXPLANATION
+=================================
+
+PURPOSE
+Vue Router lets one Vue application show different pages at different URLs without reloading the entire site.
+Example: /students shows the student list, while /about shows an information page.
+
+INSTALL
+npm install vue-router
+
+ROUTER FILE: src/router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
+import StudentsView from '../views/StudentsView.vue'
+import AboutView from '../views/AboutView.vue'
+
+const routes = [
+  { path: '/', redirect: '/students' },
+  { path: '/students', component: StudentsView },
+  { path: '/about', component: AboutView }
+]
+
+export default createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+WHAT THE PARTS MEAN
+createRouter(...) creates the router object.
+createWebHistory() uses normal-looking URLs such as /students.
+routes is an array of URL rules.
+path is the URL path.
+component is the Vue page shown for that path.
+redirect sends one URL to another.
+
+IN App.vue
+<RouterLink to="/students">Students</RouterLink>
+<RouterLink to="/about">About</RouterLink>
+<RouterView />
+
+RouterLink is a navigation link managed by Vue Router.
+RouterView is the placeholder where the matched page is rendered.
+
+REGISTER IT
+In main.js:
+import router from './router'
+createApp(App).use(router).mount('#app')
+
+If RouterLink or RouterView does not work, check that router is installed and app.use(router) is present.

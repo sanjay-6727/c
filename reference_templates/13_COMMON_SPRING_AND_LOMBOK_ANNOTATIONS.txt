@@ -1,0 +1,42 @@
+COMMON SPRING / MONGODB / LOMBOK ANNOTATIONS
+============================================
+
+@SpringBootApplication
+Marks the main Spring Boot application and enables auto-configuration/component scanning.
+
+@RestController
+Declares a REST API controller whose returned Java objects are normally serialized as JSON.
+
+@RequestMapping("/students")
+Sets a shared URL prefix for controller methods.
+
+@GetMapping, @PostMapping, @PutMapping, @DeleteMapping
+Connect controller methods to HTTP request methods.
+
+@RequestBody
+Reads request JSON and converts it to a Java object.
+
+@PathVariable
+Reads a value from a URL path, such as the {id} in /students/{id}.
+
+@Document(collection = "students")
+Maps a Java model to a MongoDB collection.
+
+@Id
+Marks the unique document ID.
+
+@Data (Lombok)
+Generates getters, setters, toString, equals and hashCode.
+
+@NoArgsConstructor (Lombok)
+Generates a constructor with no arguments.
+
+@AllArgsConstructor (Lombok)
+Generates a constructor accepting all fields.
+
+@RequiredArgsConstructor (Lombok)
+Generates a constructor for required fields, usually final fields and fields marked @NonNull.
+Spring can use that constructor for dependency injection.
+
+@CrossOrigin
+Allows browser requests from the specified frontend origin. This project uses http://localhost:5173.

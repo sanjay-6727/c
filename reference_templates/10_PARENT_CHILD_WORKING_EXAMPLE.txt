@@ -1,0 +1,45 @@
+PARENT + CHILD — HOW THE ACTUAL PROJECT WORKS
+==============================================
+
+PARENT FILE: StudentsView.vue
+<StudentForm
+  :student="selectedStudent"
+  @save="saveFromForm"
+  @cancel="cancelForm"
+/>
+
+CHILD FILE: StudentForm.vue
+const props = defineProps({
+  student: { type: Object, default: null }
+})
+const emit = defineEmits(['save', 'cancel'])
+
+function submit() {
+  emit('save', {
+    name: form.name,
+    department: form.department,
+    year: Number(form.year)
+  })
+}
+
+function cancel() {
+  emit('cancel')
+}
+
+STEP BY STEP
+1. Initially selectedStudent is null. The form appears empty.
+2. User clicks Edit beside a row.
+3. Parent assigns that student to selectedStudent.
+4. The child receives the student through the student prop.
+5. A watcher copies the student's fields into the input form.
+6. User changes a field and clicks Update.
+7. Child emits save and passes the form data.
+8. Parent's saveFromForm receives the data.
+9. Parent asks Pinia to update the record.
+10. Pinia calls the API service, which sends a PUT request to Spring Boot.
+11. Parent clears selectedStudent, so the form returns to Add mode.
+
+WHY USE A CHILD COMPONENT?
+It keeps form code separate from the page/list code.
+The child focuses on collecting input; the parent coordinates saving and updating.
+This makes components easier to reuse and test.

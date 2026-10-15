@@ -1,0 +1,37 @@
+CRUD FLOW AND HTTP METHODS — DETAILED REVISION
+==============================================
+
+CRUD means:
+Create = add a new record.
+Read = display records.
+Update = edit an existing record.
+Delete = remove a record.
+
+HTTP MAPPING
+GET /students        -> repository.findAll()
+POST /students       -> repository.save(student)
+PUT /students/{id}   -> set ID, then repository.save(student)
+DELETE /students/{id}-> repository.deleteById(id)
+
+FULL REQUEST PATH
+Vue button/form
+ -> component function
+ -> Pinia action
+ -> studentApi.js fetch()
+ -> Spring Boot controller
+ -> StudentRepository
+ -> MongoDB
+ -> JSON response
+ -> Pinia state updates
+ -> Vue re-renders the list.
+
+WHY DOES THE LIST UPDATE?
+Pinia's loadStudents action assigns a new array to the reactive students state.
+Vue watches reactive state and updates the table automatically.
+
+COMMON ERRORS
+- Wrong API URL or port: verify http://localhost:8080/students.
+- CORS error: verify @CrossOrigin uses the frontend's origin.
+- Connection refused: start Spring Boot and MongoDB.
+- JSON parse error: check whether the endpoint returned JSON or an empty response.
+- Wrong ID: ensure the ID passed to PUT/DELETE belongs to the intended record.

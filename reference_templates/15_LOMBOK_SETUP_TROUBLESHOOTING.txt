@@ -1,0 +1,34 @@
+LOMBOK SETUP AND TROUBLESHOOTING
+================================
+
+MAVEN DEPENDENCY
+In backend/pom.xml:
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional>
+</dependency>
+
+WHAT LOMBOK DOES
+Lombok is a compile-time annotation processor. It generates repetitive Java methods from annotations.
+@Data is not a Spring annotation; it comes from Lombok.
+
+IF INTELLIJ UNDERLINES @Data OR GETTERS
+1. Confirm the Lombok dependency is in the backend pom.xml.
+2. Reload Maven so IntelliJ downloads the dependency.
+3. Install/enable the Lombok plugin if your IntelliJ version needs it.
+4. Open Settings -> Build, Execution, Deployment -> Compiler -> Annotation Processors.
+5. Enable annotation processing.
+6. Rebuild the project.
+
+IF MAVEN COMPILE FAILS
+Check that imports are correct:
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+Do not add @RequiredArgsConstructor to Student just to generate all constructors; use @NoArgsConstructor and @AllArgsConstructor there.
+For the controller, @RequiredArgsConstructor creates a constructor for the final repository field.
+
+The frontend does not use Lombok. Lombok only affects Java compilation.

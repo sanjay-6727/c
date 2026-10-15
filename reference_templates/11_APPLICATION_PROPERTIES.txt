@@ -1,9 +1,0 @@
-MONGODB CONNECTION TEMPLATE
-===========================
-# application.properties
-spring.data.mongodb.uri=mongodb://localhost:27017/studentdb
-server.port=8080
-
-Change studentdb to your database name.
-MongoDB should be running locally.
-If your MongoDB has username/password or runs elsewhere, update the URI accordingly.

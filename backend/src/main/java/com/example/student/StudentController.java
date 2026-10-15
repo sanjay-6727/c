@@ -1,18 +1,19 @@
 package com.example.student;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-// REST controller: receives HTTP requests from Vue.
+// @RestController returns Java objects as JSON responses.
+// @RequestMapping sets the common URL prefix.
+// @RequiredArgsConstructor generates a constructor for final fields,
+// allowing Spring to inject StudentRepository.
 @RestController
 @RequestMapping("/students")
 @CrossOrigin(origins = "http://localhost:5173")
+@RequiredArgsConstructor
 public class StudentController {
     private final StudentRepository repository;
-
-    public StudentController(StudentRepository repository) {
-        this.repository = repository;
-    }
 
     // READ all: GET http://localhost:8080/students
     @GetMapping
@@ -20,14 +21,13 @@ public class StudentController {
         return repository.findAll();
     }
 
-    // CREATE: POST /students with JSON request body
+    // CREATE: POST /students with a JSON Student in the request body.
     @PostMapping
     public Student create(@RequestBody Student student) {
         return repository.save(student);
     }
 
-    // UPDATE: PUT /students/{id}
-    // This beginner example saves the supplied object with the URL ID.
+    // UPDATE: PUT /students/{id}. This simple example saves the supplied data.
     @PutMapping("/{id}")
     public Student update(@PathVariable String id, @RequestBody Student student) {
         student.setId(id);

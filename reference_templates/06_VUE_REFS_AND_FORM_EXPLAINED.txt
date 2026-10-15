@@ -1,0 +1,35 @@
+VUE REFS AND FORMS — DETAILED EXPLANATION
+=========================================
+
+<script setup>
+import { ref } from 'vue'
+const name = ref('')
+const year = ref(1)
+</script>
+
+<template>
+  <form @submit.prevent="save">
+    <input v-model="name" placeholder="Name">
+    <input v-model.number="year" type="number">
+    <button type="submit">Save</button>
+  </form>
+</template>
+
+ref()
+ref() creates a reactive value. If its value changes, Vue updates the parts of the page that use it.
+In JavaScript, read or update a ref using .value: name.value = 'Asha'.
+In a Vue template, Vue unwraps refs automatically, so write {{ name }} or v-model="name".
+
+v-model
+Connects the input to the variable. Typing updates the variable; changing the variable updates the input.
+v-model.trim removes leading/trailing whitespace from text.
+v-model.number converts numeric input to a number where possible.
+
+@submit.prevent
+@submit listens for the form submit event.
+.prevent stops the browser's default form submission, which would reload the page.
+Then Vue calls your JavaScript function.
+
+REACTIVE OBJECT
+Use reactive({ name: '', year: 1 }) when several form fields belong together.
+You access fields directly: form.name, form.year.

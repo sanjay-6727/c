@@ -1,30 +1,41 @@
-REFERENCE GUIDE — READ THIS FIRST
-=================================
-This folder contains small examples. Files under backend/ and frontend/ are the runnable project.
-The .txt files are reference notes for studying and copying patterns during practice.
+START HERE — HOW TO USE THIS REFERENCE PACK
+===========================================
 
-START ORDER
-1. 01_SPRINGBOOT_MODEL.txt
-2. 02_MONGODB_REPOSITORY.txt
-3. 03_REST_CONTROLLER_CRUD.txt
-4. 04_VUE_REACTIVE_FORM.txt
-5. 05_FETCH_API_FUNCTIONS.txt
-6. 06_VUE_ROUTER.txt
-7. 07_PINIA_STORE.txt
-8. 08_PROPS_AND_EMITS.txt
-9. 09_VUE_PARENT_CHILD_EXAMPLE.txt
-10. 10_COMMON_VUE_FUNCTIONS.txt
+WHAT IS IN THIS PROJECT?
+- backend/: Java Spring Boot code. It exposes URLs that the frontend calls.
+- frontend/: Vue 3 website. It has pages, a form, a table and navigation.
+- reference_templates/: individual TXT lessons with examples and explanations.
 
-RUN
-- Backend: run StudentApplication.java from IntelliJ.
-- Frontend: cd frontend; npm install; npm run dev.
-- MongoDB should be running at localhost:27017.
+RUN THE PROJECT
+1. Make sure MongoDB is running at mongodb://localhost:27017.
+2. In IntelliJ, open backend/pom.xml as a Maven project and run StudentApplication.java.
+3. In a terminal, move into frontend/.
+4. Run: npm install
+5. Run: npm run dev
+6. Open the localhost URL printed by Vite.
 
-Remember:
-Model = fields
-Repository = database methods
-Controller = API URLs
-Router = page navigation
-Pinia = shared state
-Props = parent sends data to child
-Emits = child sends event/data to parent
+HOW A REQUEST TRAVELS
+1. User clicks Add in Vue.
+2. StudentForm emits a "save" event to StudentsView.
+3. StudentsView calls the Pinia store.
+4. Pinia calls studentApi.js.
+5. studentApi.js sends POST /students to Spring Boot.
+6. StudentController calls StudentRepository.
+7. MongoRepository stores the document in MongoDB.
+8. Pinia reloads the list; Vue updates the page.
+
+QUICK DEFINITIONS
+Model = Java class representing one record.
+Repository = ready-made database operations.
+Controller = HTTP endpoints such as GET and POST.
+Lombok = generates repetitive Java methods.
+Router = chooses which page appears for a URL.
+Pinia = shared frontend state.
+Props = parent sends data down to child.
+Emits = child sends an event/data up to parent.
+
+READ THE TXT FILES IN ORDER:
+01 Lombok model, 02 Repository, 03 Controller, 04 Mongo connection,
+05 Fetch, 06 Vue refs/forms, 07 Router, 08 Pinia, 09 Props and Emits,
+10 Parent-child example, 11 CRUD flow, 12 common Vue functions,
+13 common annotations, 14 adapting to another question.

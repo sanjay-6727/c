@@ -1,0 +1,63 @@
+PINIA — DETAILED EXPLANATION
+============================
+
+PURPOSE
+Pinia is a store for state that multiple components need to share.
+Instead of passing the same list through many layers of components, components can access one store.
+
+INSTALL
+npm install pinia
+
+REGISTER IN main.js
+import { createPinia } from 'pinia'
+const app = createApp(App)
+app.use(createPinia())
+app.use(router)
+app.mount('#app')
+
+SIMPLE STORE
+import { defineStore } from 'pinia'
+
+export const useCounterStore = defineStore('counter', {
+  state: () => ({ count: 0 }),
+
+  getters: {
+    doubleCount: (state) => state.count * 2
+  },
+
+  actions: {
+    increment() {
+      this.count++
+    }
+  }
+})
+
+STATE
+state contains the actual shared data. Here, count starts at 0.
+
+GETTER
+A getter derives a value from state. doubleCount returns count multiplied by 2.
+
+ACTION
+An action is a function for operations or changing state. increment changes count.
+
+USE IN A COMPONENT
+<script setup>
+import { useCounterStore } from '../stores/counterStore'
+const store = useCounterStore()
+</script>
+
+<template>
+  <p>Count: {{ store.count }}</p>
+  <p>Double: {{ store.doubleCount }}</p>
+  <button @click="store.increment()">Increase</button>
+</template>
+
+IN THIS PROJECT
+studentStore.js stores students, loading and error.
+loadStudents fetches the latest list.
+saveStudent creates or updates a record.
+removeStudent deletes a record.
+studentCount is a getter that returns students.length.
+
+Remember: Pinia stores frontend state; MongoDB permanently stores the backend data.

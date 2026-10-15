@@ -2,6 +2,7 @@ package com.example.student;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-// MongoRepository already provides save, findAll, findById, deleteById, etc.
+// Spring Data generates the implementation automatically.
+// The second generic type is String because Student.id is a String.
 public interface StudentRepository extends MongoRepository<Student, String> {
 }

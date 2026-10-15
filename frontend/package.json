@@ -1,5 +1,5 @@
 {
-  "name": "student-crud-router-pinia",
+  "name": "student-crud-lombok-router-pinia",
   "version": "1.0.0",
   "private": true,
   "type": "module",

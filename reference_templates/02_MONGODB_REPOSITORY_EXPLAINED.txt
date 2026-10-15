@@ -1,0 +1,36 @@
+MONGODB REPOSITORY — DETAILED BEGINNER EXPLANATION
+==================================================
+
+CODE
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface StudentRepository extends MongoRepository<Student, String> {
+}
+
+WHAT IS A REPOSITORY?
+The repository is the Java layer that talks to MongoDB.
+Instead of writing a query for every basic operation, Spring Data gives you common methods.
+
+UNDERSTAND THE GENERIC TYPES
+MongoRepository<Student, String>
+- Student = the type of object stored.
+- String = the type of Student's ID field.
+
+COMMON METHODS
+repository.save(student)       Save a new record or save changes to a record.
+repository.findAll()           Return all students.
+repository.findById(id)        Find a student by ID; returns Optional<Student>.
+repository.existsById(id)      Check whether an ID exists.
+repository.deleteById(id)      Delete a record by ID.
+repository.count()             Count all records.
+
+WHY IS THE INTERFACE EMPTY?
+Spring Data creates the implementation automatically at application startup.
+You declare that you want MongoRepository methods; Spring supplies the working implementation.
+
+CUSTOM QUERY EXAMPLE
+List<Student> findByDepartment(String department);
+Spring Data can create a query from this method name, as long as the property exists on Student.
+
+WHERE DOES IT GO?
+Place StudentRepository in the same package as StudentApplication or a subpackage so component scanning can find it.

@@ -1,24 +1,17 @@
 <script setup>
 import { reactive, watch } from 'vue'
 
-// PROPS: values received from the parent component.
+// PROPS carry data from the parent page down into this child form.
 const props = defineProps({
-  student: {
-    type: Object,
-    default: null
-  }
+  student: { type: Object, default: null }
 })
 
-// EMITS: events sent from this child back to the parent.
+// EMITS let this child notify the parent that save/cancel happened.
 const emit = defineEmits(['save', 'cancel'])
 
-const form = reactive({
-  name: '',
-  department: '',
-  year: 1
-})
+const form = reactive({ name: '', department: '', year: 1 })
 
-// When parent selects a student to edit, copy it into the form.
+// When parent chooses Edit, copy that student's fields into the form.
 watch(() => props.student, (student) => {
   form.name = student?.name || ''
   form.department = student?.department || ''
@@ -26,7 +19,7 @@ watch(() => props.student, (student) => {
 }, { immediate: true })
 
 function submit() {
-  // Send a copy to parent; parent will call the Pinia store.
+  // Emit the form data upward; the parent decides how to save it.
   emit('save', {
     name: form.name,
     department: form.department,

@@ -1,0 +1,53 @@
+FETCH API — DETAILED EXPLANATION
+================================
+
+API BASE URL
+const API = 'http://localhost:8080/students'
+
+READ
+async function getAll() {
+  const response = await fetch(API);
+  return await response.json();
+}
+
+CREATE
+async function create(student) {
+  const response = await fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(student)
+  });
+  return await response.json();
+}
+
+UPDATE
+async function update(id, student) {
+  const response = await fetch(`${API}/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(student)
+  });
+  return await response.json();
+}
+
+DELETE
+async function remove(id) {
+  await fetch(`${API}/${id}`, { method: 'DELETE' });
+}
+
+EXPLANATION
+fetch(url) sends an HTTP request to the backend.
+async allows a function to use await.
+await pauses that function until the request completes.
+response.json() reads a JSON response and turns it into a JavaScript value.
+JSON.stringify(student) turns a JavaScript object into JSON text for the request body.
+headers tell Spring Boot that the body is JSON.
+method chooses GET, POST, PUT or DELETE.
+
+WHY BACKTICKS?
+`${API}/${id}` uses JavaScript template-literal syntax to insert the values into a string.
+Use backticks, not ordinary quotes, around strings containing ${...}.
+
+WHY KEEP THIS IN studentApi.js?
+It separates networking code from page layout. If the API URL changes, you can update one file.
+Always check response.ok in a robust app so HTTP errors are not mistaken for success.

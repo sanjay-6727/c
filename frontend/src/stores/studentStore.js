@@ -1,21 +1,21 @@
 import { defineStore } from 'pinia'
 import * as api from '../services/studentApi'
 
-// Pinia store = shared state + functions that change/load that state.
-// Use this store from any component with: const store = useStudentStore()
+// A Pinia store is shared state plus functions to load/change it.
 export const useStudentStore = defineStore('students', {
+  // STATE: the shared data used by all components.
   state: () => ({
     students: [],
     loading: false,
     error: ''
   }),
 
-  // Getters are computed values based on state.
+  // GETTER: calculated data derived from state.
   getters: {
     studentCount: (state) => state.students.length
   },
 
-  // Actions are functions that can call the API and update state.
+  // ACTIONS: functions that perform work, including API calls.
   actions: {
     async loadStudents() {
       this.loading = true

@@ -2,14 +2,13 @@
   <div class="app">
     <header>
       <h1>Student Management</h1>
-      <!-- RouterLink changes pages without reloading the whole app. -->
+      <!-- RouterLink changes the URL/page without a full reload. -->
       <nav>
         <RouterLink to="/students">Students</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </header>
-
-    <!-- The current page appears here. -->
+    <!-- RouterView displays whichever page matches the current URL. -->
     <RouterView />
   </div>
 </template>

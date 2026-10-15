@@ -1,0 +1,23 @@
+MONGODB CONNECTION — DETAILED EXPLANATION
+=========================================
+
+FILE: backend/src/main/resources/application.properties
+
+spring.data.mongodb.uri=mongodb://localhost:27017/studentdb
+server.port=8080
+
+BREAKDOWN
+mongodb://     The connection protocol for MongoDB.
+localhost      The database server is on your own computer.
+27017          MongoDB's usual default port.
+studentdb      The database name used by this application.
+server.port    The HTTP port for Spring Boot, not MongoDB.
+
+IMPORTANT
+MongoDB must be running before you expect database calls to work.
+The database/collection can be created automatically when data is inserted.
+Vue does not connect directly to MongoDB; Vue calls Spring Boot, and Spring Boot talks to MongoDB.
+
+IF MONGODB IS ON ANOTHER MACHINE
+Update localhost to the database host, and use the correct credentials/options.
+Do not put real passwords into code you intend to publish publicly.

@@ -1,4 +1,4 @@
-// Keep all fetch requests in one file so components stay simple.
+// This file contains HTTP requests. Components do not need to know fetch details.
 const API = 'http://localhost:8080/students'
 
 async function request(url, options = {}) {
@@ -11,26 +11,29 @@ async function request(url, options = {}) {
   })
 
   if (!response.ok) {
-    throw new Error(`API error: ${response.status}. Check that Spring Boot is running.`)
+    throw new Error(`API error: ${response.status}. Check that Spring Boot and MongoDB are running.`)
   }
 
-  // DELETE may return an empty response.
   if (response.status === 204) return null
   return response.json()
 }
 
+// GET = read all records.
 export const getStudents = () => request(API)
 
+// POST = create a record. JSON.stringify turns the object into JSON text.
 export const addStudent = (student) => request(API, {
   method: 'POST',
   body: JSON.stringify(student)
 })
 
+// PUT = update the record with this ID.
 export const updateStudent = (id, student) => request(`${API}/${id}`, {
   method: 'PUT',
   body: JSON.stringify(student)
 })
 
+// DELETE = remove the record with this ID.
 export const deleteStudent = (id) => request(`${API}/${id}`, {
   method: 'DELETE'
 })

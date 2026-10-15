@@ -10,14 +10,14 @@ onMounted(() => {
   store.loadStudents()
 })
 
-// Receives the child's "save" event (EMITS) and sends data to Pinia.
+// The child emits "save"; this parent receives the data and calls Pinia.
 async function saveFromForm(studentData) {
   const id = selectedStudent.value?.id || ''
   await store.saveStudent(studentData, id)
   selectedStudent.value = null
 }
 
-// Called when the child emits "cancel".
+// The child emits "cancel"; this parent clears the selected record.
 function cancelForm() {
   selectedStudent.value = null
 }
@@ -32,8 +32,8 @@ function cancelForm() {
       <button @click="store.loadStudents()">Refresh</button>
     </div>
 
-    <!-- PROPS: pass selectedStudent down to the child.
-         EMITS: child sends save/cancel events back to this parent. -->
+    <!-- PROP: :student sends selectedStudent to the child.
+         EMITS: @save and @cancel listen to events sent by the child. -->
     <StudentForm
       :student="selectedStudent"
       @save="saveFromForm"

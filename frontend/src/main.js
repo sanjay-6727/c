@@ -5,10 +5,7 @@ import router from './router'
 
 const app = createApp(App)
 
-// Pinia must be installed before using stores.
+// Pinia stores shared data; Router handles page navigation.
 app.use(createPinia())
-
-// Router enables URL-based page navigation.
 app.use(router)
-
 app.mount('#app')

@@ -1,0 +1,54 @@
+REST CONTROLLER — DETAILED CRUD EXPLANATION
+===========================================
+
+EXAMPLE
+@RestController
+@RequestMapping("/students")
+@CrossOrigin(origins = "http://localhost:5173")
+@RequiredArgsConstructor
+public class StudentController {
+    private final StudentRepository repository;
+
+    @GetMapping
+    public List<Student> getAll() {
+        return repository.findAll();
+    }
+
+    @PostMapping
+    public Student create(@RequestBody Student student) {
+        return repository.save(student);
+    }
+
+    @PutMapping("/{id}")
+    public Student update(@PathVariable String id, @RequestBody Student student) {
+        student.setId(id);
+        return repository.save(student);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) {
+        repository.deleteById(id);
+    }
+}
+
+ANNOTATIONS
+@RestController: this class handles web requests and returned objects are converted to JSON.
+@RequestMapping("/students"): all endpoint paths in this class start with /students.
+@CrossOrigin: allows the Vite frontend at port 5173 to call the backend at port 8080.
+@RequiredArgsConstructor: Lombok generates a constructor for final fields, so Spring can inject repository.
+@GetMapping: handles HTTP GET.
+@PostMapping: handles HTTP POST.
+@PutMapping("/{id}"): handles HTTP PUT with an ID in the URL.
+@DeleteMapping("/{id}"): handles HTTP DELETE with an ID in the URL.
+@RequestBody: converts JSON from the request into a Java Student object.
+@PathVariable: reads the {id} part from the URL.
+
+ENDPOINT TABLE
+GET    http://localhost:8080/students       Read all students
+POST   http://localhost:8080/students       Create student
+PUT    http://localhost:8080/students/123   Update student with ID 123
+DELETE http://localhost:8080/students/123  Delete student with ID 123
+
+NOTE
+This is intentionally a small lab template. A production API should validate input and return proper status codes
+for missing IDs. In this beginner version, PUT sets the URL ID and saves the object.

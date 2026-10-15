@@ -1,0 +1,33 @@
+COMMON VUE FUNCTIONS AND DIRECTIVES
+===================================
+
+import { ref, reactive, onMounted, computed, watch } from 'vue'
+
+ref(value)
+Use for a reactive value such as a selected ID, string, number or array.
+JavaScript access uses .value; templates automatically unwrap refs.
+
+reactive(object)
+Use for a reactive object, commonly a form:
+const form = reactive({ name: '', year: 1 })
+Read/update with form.name and form.year.
+
+onMounted(callback)
+Runs after the component is mounted. Often used to fetch initial data:
+onMounted(() => store.loadStudents())
+
+computed(callback)
+Creates a derived reactive value, e.g. const total = computed(() => items.value.length).
+
+watch(source, callback)
+Runs callback when a reactive source changes. The student form uses this to copy selected student's fields.
+
+TEMPLATE DIRECTIVES
+v-model="name"       Connects an input to state.
+v-for="item in items" Repeats an element for every item.
+:key="item.id"       Gives each repeated element a stable identity.
+v-if="loading"       Shows content only when true.
+@click="save"        Calls a function on click.
+:student="selected"  Passes a dynamic prop.
+@save="handleSave"   Listens to a child event.
+@submit.prevent      Handles submit without browser reload.

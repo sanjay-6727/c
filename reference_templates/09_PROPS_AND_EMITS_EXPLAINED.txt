@@ -1,0 +1,59 @@
+PROPS AND EMITS — DETAILED EXPLANATION
+======================================
+
+THE BASIC DIRECTION
+Props: parent -> child. A parent passes data to a child.
+Emits: child -> parent. A child announces an event and may send data with it.
+
+CHILD EXAMPLE
+<script setup>
+const props = defineProps({
+  message: { type: String, default: '' }
+})
+
+const emit = defineEmits(['sendMessage'])
+
+function send() {
+  emit('sendMessage', 'Hello from child')
+}
+</script>
+
+<template>
+  <p>{{ props.message }}</p>
+  <button @click="send">Send to parent</button>
+</template>
+
+PARENT EXAMPLE
+<script setup>
+import ChildExample from './ChildExample.vue'
+
+function receive(text) {
+  alert(text)
+}
+</script>
+
+<template>
+  <ChildExample
+    message="Hello child"
+    @sendMessage="receive"
+  />
+</template>
+
+EXPLANATION
+defineProps declares which values the child is allowed to receive.
+message="Hello child" passes a string prop to the child.
+defineEmits declares event names the child can emit.
+emit('sendMessage', value) sends an event and its payload upward.
+@sendMessage="receive" tells the parent to call receive when that event happens.
+The payload becomes the first argument of receive(text).
+
+IN THE STUDENT PROJECT
+StudentsView is the parent page.
+StudentForm is the child form.
+:student="selectedStudent" passes the selected student as a prop.
+emit('save', studentData) sends form data to the parent.
+@save="saveFromForm" receives the event.
+The parent then calls the Pinia store to save the data.
+
+IMPORTANT
+A child should not directly mutate a prop. Copy the prop's values into its own form state instead.
