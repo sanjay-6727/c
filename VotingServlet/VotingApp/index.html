@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Eligibility</title>
+</head>
+<body>
+    <h2>Enter Your Details</h2>
+
+    <form action="vote" method="post">
+        <label>
+            Name:
+            <input type="text" name="name" required>
+        </label>
+        <br><br>
+
+        <label>
+            Age:
+            <input type="number" name="age" min="0" required>
+        </label>
+        <br><br>
+
+        <input type="submit" value="Check Eligibility">
+    </form>
+</body>
+</html>
