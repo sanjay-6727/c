@@ -1,0 +1,24 @@
+Step 1 — Go to your Java source folder
+cd ~/ServletProject
+
+
+Step 2 — Compile the servlet
+javac -cp "/usr/local/apache-tomcat-8.5.50/lib/servlet-api.jar" HelloServlet.java
+
+
+Step 3 — Copy the compiled class
+cp HelloServlet.class /usr/local/apache-tomcat-8.5.50/webapps/HelloServlet/WEB-INF/classes/
+
+
+Step 4 — Start Tomcat
+cd /usr/local/apache-tomcat-8.5.50/bin
+./startup.sh
+
+
+Step 5 — Open in your browser
+http://localhost:8080/HelloServlet/
+
+
+Enter your name and click Submit.
+Step 6 — Stop Tomcat after finishing
+./shutdown.sh

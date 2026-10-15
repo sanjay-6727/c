@@ -1,0 +1,37 @@
+# Node & Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-ssr/
+target/
+build/
+
+# Java classes & packages
+*.class
+*.jar
+*.war
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & local files
+.env
+.env.local
+*.local
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db

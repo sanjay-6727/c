@@ -1,0 +1,16 @@
+CREATE DATABASE student;
+USE student;
+
+CREATE TABLE students (
+    regno VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(100),
+    course VARCHAR(100)
+);
+
+
+start my sql and tomcat
+
+mysql -u root -p -h 127.0.0.1
+
+javac -cp "$CATALINA_HOME/lib/servlet-api.jar:WEB-INF/lib/mysql-connector-j.jar" \
+-d WEB-INF/classes src/DatabaseServlet.java
