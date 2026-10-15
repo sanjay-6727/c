@@ -1,0 +1,1 @@
+<template><div class="wrap"><header><div><p class="eyebrow">SPRING BOOT + MONGODB + VUE</p><h1>Campus Manager</h1><p>Two collections connected using departmentId.</p></div><nav><RouterLink to="/students">Students</RouterLink><RouterLink to="/departments">Departments</RouterLink></nav></header><RouterView /></div></template>

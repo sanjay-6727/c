@@ -1,0 +1,7 @@
+VUE NOTES
+Vue Router: /students and /departments are separate pages.
+Pinia stores: departments.js and students.js keep API calls/state reusable.
+Props: StudentForm receives departments, initialValue and editingId.
+Emits: StudentForm emits save(payload) and cancel; parent view handles those events.
+v-model: binds inputs to refs. Use v-model.number when a numeric value is expected.
+Axios: sends HTTP requests to the Spring Boot REST endpoints.

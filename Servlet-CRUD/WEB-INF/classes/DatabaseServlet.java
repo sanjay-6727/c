@@ -1,8 +1,8 @@
 
 import java.io.*;
 import java.sql.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 
 public class DatabaseServlet extends HttpServlet {
 

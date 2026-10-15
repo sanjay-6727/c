@@ -1,0 +1,5 @@
+TWO COLLECTIONS
+1) departments: { _id, name, code }
+2) students: { _id, name, email, year, departmentId }
+
+Student.departmentId stores the MongoDB ID of a department. This simple string reference avoids @DBRef and is easy to explain in a lab viva. It is an application-level relationship; MongoDB does not enforce SQL-style foreign keys or automatically cascade deletes.

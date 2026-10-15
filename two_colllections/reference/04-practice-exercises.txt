@@ -1,0 +1,7 @@
+PRACTICE
+1. Add a phone field to Student.java and StudentForm.vue.
+2. Add GET /api/students/by-department/{id} filtering to the UI.
+3. Add findByNameContainingIgnoreCase to StudentRepository for searching.
+4. Prevent department deletion while students still reference it.
+5. Add validation for email, required names and year range.
+6. Repeat the same pattern with Book + Publisher or Product + Category.

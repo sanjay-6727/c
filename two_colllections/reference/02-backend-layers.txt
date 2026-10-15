@@ -1,0 +1,7 @@
+BACKEND LAYERS
+Model: Java class mapped to a MongoDB collection using @Document; @Id maps the document ID.
+Repository: extends MongoRepository<Model, String> to get findAll, findById, save and deleteById.
+Service: contains business logic and validates that a student's department exists.
+Controller: exposes HTTP endpoints with @GetMapping, @PostMapping, @PutMapping and @DeleteMapping.
+Flow: Vue -> Axios -> Controller -> Service -> Repository -> MongoDB.
+Lombok: @Data creates getters/setters and common methods; @NoArgsConstructor and @AllArgsConstructor generate constructors; @RequiredArgsConstructor injects final service dependencies.
