@@ -27,6 +27,36 @@ VotingApp/
 6. Open:
    http://localhost:8080/VotingApp/
 
+PS C:\Users\sanja\Downloads\apache-tomcat-10.1.60-windows-x64\apache-tomcat-10.1.60\webapps\VotingServlet> ls
+
+
+    Directory: C:\Users\sanja\Downloads\apache-tomcat-10.1.60-windows-x64\apache-tomcat-10.1.60\webapps\VotingServlet
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        15-10-2026     10:24                WEB-INF
+-a----        15-10-2026     10:03            603 index.html
+-a----        15-10-2026     10:03            994 README.txt
+-a----        15-10-2026     10:27           1927 VotingServlet.java
+
+
+PS C:\Users\sanja\Downloads\apache-tomcat-10.1.60-windows-x64\apache-tomcat-10.1.60\webapps\VotingServlet> cd web-inf
+PS C:\Users\sanja\Downloads\apache-tomcat-10.1.60-windows-x64\apache-tomcat-10.1.60\webapps\VotingServlet\web-inf> ls
+
+
+    Directory:
+    C:\Users\sanja\Downloads\apache-tomcat-10.1.60-windows-x64\apache-tomcat-10.1.60\webapps\VotingServlet\web-inf
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        15-10-2026     10:28                classes
+-a----        15-10-2026     10:03            578 web.xml
+
+
+PS C:\Users\sanja\Downloads\apache-tomcat-10.1.60-windows-x64\apache-tomcat-10.1.60\webapps\VotingServlet\web-inf>
+
 Example:
 Name = Arun
 Age = 20
